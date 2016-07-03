@@ -1,0 +1,10 @@
+尤果网
+
+一级网址：http://www.lesmao.com/forum-UGirls-{$index[1]}.html
+关键代码段：
+<a href="http://www.lesmao.com/thread-13786-1-1.html" onclick="atarget(this)">
+                                                    <img src="http://wpic.lesmao.com/L/N/H/UGirls-APP/401.jpg" alt="UGirls 爱尤物 No.401 Modo 谭晓彤" />
+其中：href为二级网址；src为图片网址；alt为图片标题。
+
+二级网址：http://www.lesmao.com/thread-13266-{$index[1-5]}-2.html
+其中：图片网址形如：http://i.lesmao.com/i/les/T/UGirls

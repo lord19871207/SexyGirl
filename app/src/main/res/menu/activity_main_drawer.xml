@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_ugirl"
+            android:icon="@mipmap/ic_launcher"
+            android:title="尤果网" />
+        <!--<item
+            android:id="@+id/nav_gallery"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Gallery" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Slideshow" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Tools" />-->
+    </group>
+
+    <item android:title="模式选择">
+        <menu>
+            <item
+                android:id="@+id/nav_online"
+                android:icon="@mipmap/ic_launcher"
+                android:title="在线" />
+            <item
+                android:id="@+id/nav_local"
+                android:icon="@mipmap/ic_launcher"
+                android:title="本地" />
+        </menu>
+    </item>
+
+</menu>

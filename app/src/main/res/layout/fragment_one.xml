@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.vgaw.sexygirl.ui.loadmore.LoadMoreGridViewContainer
+        android:id="@+id/load_more_grid_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.vgaw.sexygirl.ui.loadmore.GridViewWithHeaderAndFooter
+            android:id="@+id/gv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></com.vgaw.sexygirl.ui.loadmore.GridViewWithHeaderAndFooter>
+    </com.vgaw.sexygirl.ui.loadmore.LoadMoreGridViewContainer>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="下一页" />
+</LinearLayout>
