@@ -22,4 +22,12 @@ public class PreferenceUtil {
     public static void setLastUGril(String info){
         sp.edit().putString("last_ugirl", info).commit();
     }
+
+    public static boolean isFirst(){
+        return sp.getBoolean("isFirst", true);
+    }
+
+    public static void setFirst(){
+        sp.edit().putBoolean("isFirst", false).commit();
+    }
 }

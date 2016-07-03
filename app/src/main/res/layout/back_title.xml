@@ -5,11 +5,11 @@
 
     <include layout="@layout/title"/>
 
-    <TextView
-        android:id="@+id/tv_back"
-        android:layout_width="60dp"
-        android:layout_height="match_parent"
-        android:drawableLeft="@mipmap/ic_launcher"
-        android:paddingLeft="@dimen/space_10"
-        android:visibility="visible"/>
+    <ImageView
+        android:id="@+id/v_back"
+        android:layout_width="@dimen/space_30"
+        android:layout_height="@dimen/space_20"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/space_10"
+        android:src="@mipmap/back_white" />
 </RelativeLayout>

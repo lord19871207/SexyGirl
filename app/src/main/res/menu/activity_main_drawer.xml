@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_ugirl"
-            android:icon="@mipmap/ic_launcher"
-            android:title="尤果网" />
-        <!--<item
-            android:id="@+id/nav_gallery"
-            android:icon="@mipmap/ic_launcher"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@mipmap/ic_launcher"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@mipmap/ic_launcher"
-            android:title="Tools" />-->
-    </group>
+    <item android:title="分类">
+        <menu>
+            <item
+                android:id="@+id/nav_ugirl"
+                android:icon="@mipmap/ic_launcher"
+                android:title="尤果网" />
+            <item
+                android:id="@+id/nav_tuigirl"
+                android:icon="@mipmap/ic_launcher"
+                android:title="推女郎" />
+        </menu>
+    </item>
 
     <item android:title="模式选择">
         <menu>
@@ -33,4 +27,16 @@
         </menu>
     </item>
 
+    <item android:title="设置">
+        <menu>
+            <item
+                android:id="@+id/nav_feedback"
+                android:icon="@mipmap/ic_launcher"
+                android:title="反馈" />
+            <item
+                android:id="@+id/nav_quit"
+                android:icon="@mipmap/ic_launcher"
+                android:title="退出" />
+        </menu>
+    </item>
 </menu>

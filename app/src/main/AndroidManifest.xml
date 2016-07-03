@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".activity.TwoActivity"/>
         <activity android:name=".activity.PicViewActivity"/>
+        <activity android:name=".activity.FeedbackActivity"/>
 
         <meta-data android:value="f6a95d9ae8ba3037d4934073f12593e1" android:name="BUG_HD_SDK_GENERAL_KEY" />
     </application>
