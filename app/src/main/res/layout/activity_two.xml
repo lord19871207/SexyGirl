@@ -15,6 +15,14 @@
             android:layout_height="match_parent"></ListView>
     </com.vgaw.sexygirl.ui.loadmore.LoadMoreListViewContainer>
 
+    <ImageView
+        android:id="@+id/iv_up"
+        android:layout_width="@dimen/space_30"
+        android:layout_height="@dimen/space_30"
+        android:src="@mipmap/up"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="@dimen/space_10"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/space_50"

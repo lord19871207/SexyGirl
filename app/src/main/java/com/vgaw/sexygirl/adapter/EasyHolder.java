@@ -12,8 +12,10 @@ import android.view.View;
  */
 public abstract class EasyHolder {
     protected View view;
+    protected Context context;
 
     public void init(Context mContext){
+        this.context = mContext;
         view = LayoutInflater.from(mContext).inflate(getLayout(), null);
     }
 

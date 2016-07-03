@@ -2,9 +2,7 @@ package com.vgaw.sexygirl.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 
@@ -17,7 +15,6 @@ import com.vgaw.sexygirl.spider.UGirlTwoSpider;
 import com.vgaw.sexygirl.ui.loadmore.LoadMoreContainer;
 import com.vgaw.sexygirl.ui.loadmore.LoadMoreHandler;
 import com.vgaw.sexygirl.ui.loadmore.LoadMoreListViewContainer;
-import com.vgaw.sexygirl.ui.loadmore.LoadMoreUIHandler;
 
 import java.util.ArrayList;
 
@@ -87,6 +84,7 @@ public class TwoActivity extends BaseActivity {
     private void initRefreshView() {
         listViewContainer = (LoadMoreListViewContainer) findViewById(R.id.load_more_list_view_container);
         listViewContainer.useDefaultFooter();
+        listViewContainer.setUpView(findViewById(R.id.iv_up));
         listViewContainer.setLoadMoreHandler(new LoadMoreHandler() {
             @Override
             public void onLoadMore(LoadMoreContainer loadMoreContainer) {

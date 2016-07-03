@@ -1,8 +1,12 @@
 package com.vgaw.sexygirl.ui.loadmore;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
 import android.widget.AbsListView;
 import android.widget.LinearLayout;
 
@@ -25,6 +29,10 @@ public abstract class LoadMoreContainerBase extends LinearLayout implements Load
     private View mFooterView;
 
     private AbsListView mAbsListView;
+    private View mUpView;
+    private boolean isLastUp = false;
+    private int lastItemIndex = 0;
+
 
     public LoadMoreContainerBase(Context context) {
         super(context);
@@ -56,6 +64,16 @@ public abstract class LoadMoreContainerBase extends LinearLayout implements Load
         setLoadMoreUIHandler(footerView);
     }
 
+    public void setUpView(View v){
+        this.mUpView = v;
+        mUpView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAbsListView.smoothScrollToPosition(0);
+            }
+        });
+    }
+
     private void init() {
 
         if (mFooterView != null) {
@@ -81,6 +99,20 @@ public abstract class LoadMoreContainerBase extends LinearLayout implements Load
 
             @Override
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (mUpView != null){
+                    // 上滑消失
+                    if ((firstVisibleItem > lastItemIndex || firstVisibleItem == 0) && !isLastUp) {
+                        isLastUp = true;
+                        animateUp(false);
+                    }
+                    // 下滑出现
+                    else if (firstVisibleItem < lastItemIndex && isLastUp) {
+                        isLastUp = false;
+                        animateUp(true);
+                    }
+                    lastItemIndex = firstVisibleItem;
+                }
+
                 if (null != mOnScrollListener) {
                     mOnScrollListener.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount);
                 }
@@ -91,6 +123,23 @@ public abstract class LoadMoreContainerBase extends LinearLayout implements Load
                 }
             }
         });
+    }
+
+    private void animateUp(boolean isShow) {
+        PropertyValuesHolder alphaHolder;
+        PropertyValuesHolder yHolder;
+        int translationY = mUpView.getHeight() + ((ViewGroup.MarginLayoutParams)mUpView.getLayoutParams()).bottomMargin;
+        if (isShow) {
+            alphaHolder = PropertyValuesHolder.ofFloat("alpha", 0, 1);
+            yHolder = PropertyValuesHolder.ofFloat("translationY", translationY, 0);
+        } else {
+            alphaHolder = PropertyValuesHolder.ofFloat("alpha", 1, 0);
+            yHolder = PropertyValuesHolder.ofFloat("translationY", 0, translationY);
+        }
+        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(mUpView, alphaHolder, yHolder);
+        animator.setInterpolator(new OvershootInterpolator());
+        animator.setDuration(400);
+        animator.start();
     }
 
     private void tryToPerformLoadMore() {
