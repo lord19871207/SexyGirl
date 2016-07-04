@@ -53,7 +53,7 @@ public class UGirlOneSpider extends DataSpider<UGrilOneBean> {
             if (!isChecked){
                 isChecked = true;
                 int count = checkUpdateOne();
-                if (count == -1 && count != 0){
+                if (count != -1 && count != 0){
                     listener.onUpdated(count);
                 }
                 PreferenceUtil.setLastUGril(dataList.get(0).getNextUrl());
