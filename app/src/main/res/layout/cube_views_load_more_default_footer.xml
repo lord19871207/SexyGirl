@@ -5,9 +5,9 @@
 
     <TextView
         android:id="@+id/cube_views_load_more_default_footer_text_view"
-        android:layout_width="fill_parent"
-        android:layout_height="80dp"
-        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_80"
+        android:textColor="@color/gray"
         android:layout_centerInParent="true"
         android:gravity="center" />
 

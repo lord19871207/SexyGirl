@@ -28,11 +28,13 @@ import im.fir.sdk.VersionCheckCallback;
 public class MainActivity extends BaseActivity {
     private OneFragment oneFragment;
     private LocalOneFragment localOneFragment;
+    private DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        checkUpdate();
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        proFirst();
         proNavigationView();
 
         oneFragment = new OneFragment();
@@ -43,9 +45,11 @@ public class MainActivity extends BaseActivity {
 
     private void proNavigationView(){
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setCheckedItem(R.id.nav_ugirl);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
+                drawerLayout.closeDrawer(GravityCompat.START);
                 switch (item.getItemId()){
                     // 尤果网
                     case R.id.nav_ugirl:
@@ -66,24 +70,28 @@ public class MainActivity extends BaseActivity {
                         finish();
                         break;
                 }
-                return false;
+                return true;
             }
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+    /**
+     * 为了防止第一次弹出动画和更新对话框同时打开，所以将更新放在此处
+     */
+    private void proFirst(){
         if (PreferenceUtil.isFirst()){
-            final DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawerLayout.openDrawer(GravityCompat.START);
             drawerLayout.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     drawerLayout.closeDrawer(GravityCompat.START);
                     PreferenceUtil.setFirst();
+
+                    checkUpdate();
                 }
             }, 1000);
+        }else {
+            checkUpdate();
         }
     }
 
@@ -99,9 +107,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
@@ -116,11 +123,6 @@ public class MainActivity extends BaseActivity {
                 if (Utils.getVersionCode(MainActivity.this) < bean.getVersion()){
                     new UpdateDialog(MainActivity.this, bean).show();
                 }
-            }
-
-            @Override
-            public void onFail(Exception e) {
-                super.onFail(e);
             }
         });
     }

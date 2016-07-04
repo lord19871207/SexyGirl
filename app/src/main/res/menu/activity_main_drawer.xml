@@ -3,40 +3,46 @@
 
     <item android:title="分类">
         <menu>
-            <item
-                android:id="@+id/nav_ugirl"
-                android:icon="@mipmap/ic_launcher"
-                android:title="尤果网" />
-            <item
-                android:id="@+id/nav_tuigirl"
-                android:icon="@mipmap/ic_launcher"
-                android:title="推女郎" />
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_ugirl"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="尤果网" />
+                <item
+                    android:id="@+id/nav_tuigirl"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="推女郎" />
+            </group>
         </menu>
     </item>
 
     <item android:title="模式选择">
         <menu>
-            <item
-                android:id="@+id/nav_online"
-                android:icon="@mipmap/ic_launcher"
-                android:title="在线" />
-            <item
-                android:id="@+id/nav_local"
-                android:icon="@mipmap/ic_launcher"
-                android:title="本地" />
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_online"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="在线" />
+                <item
+                    android:id="@+id/nav_local"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="本地" />
+            </group>
         </menu>
     </item>
 
     <item android:title="设置">
         <menu>
-            <item
-                android:id="@+id/nav_feedback"
-                android:icon="@mipmap/ic_launcher"
-                android:title="反馈" />
-            <item
-                android:id="@+id/nav_quit"
-                android:icon="@mipmap/ic_launcher"
-                android:title="退出" />
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_feedback"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="反馈" />
+                <item
+                    android:id="@+id/nav_quit"
+                    android:icon="@mipmap/ic_launcher"
+                    android:title="退出" />
+            </group>
         </menu>
     </item>
 </menu>

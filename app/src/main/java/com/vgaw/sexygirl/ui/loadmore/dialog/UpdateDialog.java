@@ -49,15 +49,15 @@ public class UpdateDialog {
                 .create();
 
         TextView message = (TextView) view.findViewById(R.id.update_message);
-        message.setText(bean.getChangelog());
+        message.setText("更新内容:\n" + bean.getChangelog());
         progressbar = (ProgressBar) view.findViewById(R.id.update_progressbar);
         update = (TextView) view.findViewById(R.id.update_btn);
 
-        ColorStateList redColors = ColorStateList.valueOf(0xffff0000);
+        ColorStateList redColors = ColorStateList.valueOf(context.getResources().getColor(R.color.gray));
         SpannableStringBuilder spanBuilder = new SpannableStringBuilder("立即更新(" + bean.getBinary().getFsize() + "M)");
         //style 为0 即是正常的，还有Typeface.BOLD(粗体) Typeface.ITALIC(斜体)等
         //size  为0 即采用原始的正常的 size大小
-        spanBuilder.setSpan(new TextAppearanceSpan(null, 0, 40, redColors, null), 4, spanBuilder.length(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+        spanBuilder.setSpan(new TextAppearanceSpan(null, 0, context.getResources().getDimensionPixelSize(R.dimen.txt_14), redColors, null), 4, spanBuilder.length(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
 
         update.setText(spanBuilder);
         update.setOnClickListener(new View.OnClickListener() {

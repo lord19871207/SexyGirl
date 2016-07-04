@@ -4,7 +4,6 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/space_20"
     android:layout_marginRight="@dimen/space_20"
-    android:background="@color/background"
     android:orientation="vertical">
 
 
@@ -16,7 +15,8 @@
         android:paddingBottom="@dimen/space_10"
         android:paddingTop="@dimen/space_10"
         android:text="发现新版本"
-        android:textSize="@dimen/txt_20" />
+        android:textSize="@dimen/txt_20"
+        android:textColor="@color/dark_gray"/>
 
     <TextView
         android:id="@+id/update_message"

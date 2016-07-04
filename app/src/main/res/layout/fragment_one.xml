@@ -14,10 +14,4 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"></com.vgaw.sexygirl.ui.loadmore.GridViewWithHeaderAndFooter>
     </com.vgaw.sexygirl.ui.loadmore.LoadMoreGridViewContainer>
-
-    <Button
-        android:id="@+id/btn_next"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="下一页" />
 </LinearLayout>

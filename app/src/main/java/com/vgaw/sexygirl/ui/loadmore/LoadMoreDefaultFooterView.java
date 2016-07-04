@@ -33,7 +33,7 @@ public class LoadMoreDefaultFooterView extends RelativeLayout implements LoadMor
     @Override
     public void onLoading(LoadMoreContainer container) {
         setVisibility(VISIBLE);
-        mTextView.setText("loading...");
+        mTextView.setText("加载中...");
     }
 
     @Override
@@ -41,9 +41,9 @@ public class LoadMoreDefaultFooterView extends RelativeLayout implements LoadMor
         if (!hasMore) {
             setVisibility(VISIBLE);
             if (empty) {
-                mTextView.setText(">It is empty. :(");
+                mTextView.setText("空. :(");
             } else {
-                mTextView.setText("All the data has been loaded");
+                mTextView.setText("没有啦");
             }
         } else {
             setVisibility(INVISIBLE);
@@ -53,11 +53,11 @@ public class LoadMoreDefaultFooterView extends RelativeLayout implements LoadMor
     @Override
     public void onWaitToLoadMore(LoadMoreContainer container) {
         setVisibility(VISIBLE);
-        mTextView.setText("Click to load more");
+        mTextView.setText("点击加载更多");
     }
 
     @Override
     public void onLoadError(LoadMoreContainer container, int errorCode, String errorMessage) {
-        mTextView.setText("Load error, click to retry");
+        mTextView.setText("加载失败，点击重试");
     }
 }

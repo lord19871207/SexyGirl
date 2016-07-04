@@ -16,10 +16,10 @@ public class ImageUtil {
     public static void init(Context context) {
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 .cacheInMemory(true)
-                .imageScaleType(ImageScaleType.EXACTLY)
                 .build();
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
                 .defaultDisplayImageOptions(options)
+                .denyCacheImageMultipleSizesInMemory()
                 .build();
         ImageLoader.getInstance().init(config);
     }

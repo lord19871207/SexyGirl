@@ -73,13 +73,6 @@ public class OneFragment extends Fragment {
         gv.setAdapter(adapter);
 
         getNext();
-
-        getView().findViewById(R.id.btn_next).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getNext();
-            }
-        });
     }
 
     private void initRefreshView(View view) {
