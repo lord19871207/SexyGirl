@@ -16,6 +16,7 @@ import com.vgaw.sexygirl.R;
 import com.vgaw.sexygirl.Utils.PreferenceUtil;
 import com.vgaw.sexygirl.Utils.Utils;
 import com.vgaw.sexygirl.bean.FOTABean;
+import com.vgaw.sexygirl.fragment.DownloadFragment;
 import com.vgaw.sexygirl.fragment.LocalOneFragment;
 import com.vgaw.sexygirl.fragment.OneFragment;
 import com.vgaw.sexygirl.ui.loadmore.dialog.UpdateDialog;
@@ -28,6 +29,7 @@ import im.fir.sdk.VersionCheckCallback;
 public class MainActivity extends BaseActivity {
     private OneFragment oneFragment;
     private LocalOneFragment localOneFragment;
+    private DownloadFragment downloadFragment;
     private DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class MainActivity extends BaseActivity {
 
         oneFragment = new OneFragment();
         localOneFragment = new LocalOneFragment();
+        downloadFragment = new DownloadFragment();
 
         changeFragment(oneFragment, OneFragment.TAG);
     }
@@ -63,6 +66,7 @@ public class MainActivity extends BaseActivity {
                         break;
                     // 下载
                     case R.id.nav_download:
+                        changeFragment(downloadFragment, DownloadFragment.TAG);
                         break;
                     // 反馈
                     case R.id.nav_feedback:

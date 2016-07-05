@@ -44,6 +44,10 @@ public class Utils {
         return raw == null ? after : raw;
     }
 
+    public static int nullTo(Integer raw, int after){
+        return raw == null ? after : raw;
+    }
+
     public static boolean isNullOrEmpty(String raw) {
         return raw == null || "".equals(raw);
     }
