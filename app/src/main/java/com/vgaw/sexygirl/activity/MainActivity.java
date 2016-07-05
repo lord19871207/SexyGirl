@@ -57,16 +57,12 @@ public class MainActivity extends BaseActivity {
                 switch (item.getItemId()){
                     // 推女郎
                     case R.id.nav_tuigirl:
-                        if (getSupportFragmentManager().findFragmentByTag(OneFragment.TAG).isHidden()){
-                            changeFragment(oneFragment, OneFragment.TAG);
-                        }
+                        changeFragment(oneFragment, OneFragment.TAG);
                         oneFragment.changeCategory(OneFragment.CATEGORY_TGIRL);
                         break;
                     // 尤果网
                     case R.id.nav_ugirl:
-                        if (getSupportFragmentManager().findFragmentByTag(OneFragment.TAG).isHidden()){
-                            changeFragment(oneFragment, OneFragment.TAG);
-                        }
+                        changeFragment(oneFragment, OneFragment.TAG);
                         oneFragment.changeCategory(OneFragment.CATEGORY_UGIRL);
                         break;
                     // 在线
@@ -116,6 +112,9 @@ public class MainActivity extends BaseActivity {
     }
 
     private void changeFragment(Fragment fragment, String tag){
+        if (currentFragment == fragment){
+            return;
+        }
         FragmentManager manager = getSupportFragmentManager();
         if (currentFragment != null){
             manager.beginTransaction().hide(currentFragment).commit();
