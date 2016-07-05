@@ -61,6 +61,9 @@ public class MainActivity extends BaseActivity {
                     case R.id.nav_local:
                         changeFragment(localOneFragment, LocalOneFragment.TAG);
                         break;
+                    // 下载
+                    case R.id.nav_download:
+                        break;
                     // 反馈
                     case R.id.nav_feedback:
                         startActivity(new Intent(MainActivity.this, FeedbackActivity.class));
