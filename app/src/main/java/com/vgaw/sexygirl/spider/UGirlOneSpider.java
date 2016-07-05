@@ -1,7 +1,5 @@
 package com.vgaw.sexygirl.spider;
 
-import android.util.Log;
-
 import com.vgaw.sexygirl.Utils.PreferenceUtil;
 import com.vgaw.sexygirl.Utils.Utils;
 import com.vgaw.sexygirl.bean.UGrilOneBean;
@@ -56,7 +54,6 @@ public class UGirlOneSpider extends DataSpider<UGrilOneBean> {
                 if (count != -1 && count != 0){
                     listener.onUpdated(count);
                 }
-                PreferenceUtil.setLastUGril(dataList.get(0).getNextUrl());
             }
             listener.onSuccess(hasMore);
         } catch (IOException e) {
@@ -77,7 +74,8 @@ public class UGirlOneSpider extends DataSpider<UGrilOneBean> {
     }
 
     protected int checkUpdateOne(){
-        String last = PreferenceUtil.getLastUGril();
+        String last = PreferenceUtil.getLastUGirl();
+        PreferenceUtil.setLastUGirl(dataList.get(0).getNextUrl());
         for (int i = 0; i < dataList.size(); i++){
             if (dataList.get(i).getNextUrl().equals(last)){
                 return i;

@@ -19,7 +19,7 @@ public abstract class UGirlTwoSpider extends DataSpider<String> {
         boolean hasMore = false;
         try {
             while ((temp = reader.readLine()) != null){
-                if (temp.contains("http://i.lesmao.com/i/les/T/UGirls")){
+                if (temp.contains(getTemplete())){
                     dataList.add(Utils.findValueByKey(temp, "src").get(0));
                     hasMore = true;
                 }
@@ -35,6 +35,10 @@ public abstract class UGirlTwoSpider extends DataSpider<String> {
                 }
             }
         }
+    }
+
+    protected String getTemplete(){
+        return "http://i.lesmao.com/i/les/T/UGirls";
     }
 
 }

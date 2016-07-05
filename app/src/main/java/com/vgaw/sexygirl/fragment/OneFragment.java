@@ -18,6 +18,7 @@ import com.vgaw.sexygirl.adapter.EasyHolder;
 import com.vgaw.sexygirl.bean.UGrilOneBean;
 import com.vgaw.sexygirl.holder.OneHolder;
 import com.vgaw.sexygirl.spider.DataSpider;
+import com.vgaw.sexygirl.spider.TGirlOneSpider;
 import com.vgaw.sexygirl.spider.UGirlOneSpider;
 import com.vgaw.sexygirl.ui.loadmore.LoadMoreContainer;
 import com.vgaw.sexygirl.ui.loadmore.LoadMoreGridViewContainer;
@@ -33,12 +34,16 @@ import java.util.ArrayList;
 public class OneFragment extends Fragment {
     public static final String TAG = "onefragment";
 
+    public static final int CATEGORY_UGIRL = 1;
+    public static final int CATEGORY_TGIRL = 2;
+
     private LoadMoreGridViewContainer gridViewContainer;
     private GridView gv;
     private EasyAdapter adapter;
     private ArrayList<UGrilOneBean> dataList = null;
-    private UGirlOneSpider spider;
+    private DataSpider spider;
     private int index = 1;
+    private int category = OneFragment.CATEGORY_UGIRL;
 
     @Nullable
     @Override
@@ -51,14 +56,6 @@ public class OneFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         initRefreshView(getView());
 
-        spider = new UGirlOneSpider();
-        dataList = spider.getDataList();
-        adapter = new EasyAdapter(getContext(), dataList) {
-            @Override
-            public EasyHolder getHolder(int type) {
-                return new OneHolder();
-            }
-        };
         gv = (GridView) getView().findViewById(R.id.gv);
         // TODO: 2016/6/29 适应屏幕
         gv.setNumColumns(2);
@@ -67,12 +64,43 @@ public class OneFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getContext(), TwoActivity.class);
                 intent.putExtra("url", dataList.get(position).getNextUrl());
+                intent.putExtra("category", category);
                 startActivity(intent);
             }
         });
+        initCategory(CATEGORY_UGIRL);
+    }
+
+    private void initCategory(int category){
+        this.category = category;
+        switch (category){
+            // 尤果网
+            case CATEGORY_UGIRL:
+                spider = new UGirlOneSpider();
+                break;
+            // 推女郎
+            case CATEGORY_TGIRL:
+                spider = new TGirlOneSpider();
+                break;
+        }
+        index = 1;
+        if (dataList != null){
+            dataList.clear();
+        }
+        dataList = spider.getDataList();
+        adapter = new EasyAdapter(getContext(), dataList) {
+            @Override
+            public EasyHolder getHolder(int type) {
+                return new OneHolder();
+            }
+        };
         gv.setAdapter(adapter);
 
         getNext();
+    }
+
+    public void changeCategory(int category){
+        initCategory(category);
     }
 
     private void initRefreshView(View view) {

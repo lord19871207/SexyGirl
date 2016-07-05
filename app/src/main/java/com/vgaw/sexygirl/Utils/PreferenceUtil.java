@@ -15,12 +15,20 @@ public class PreferenceUtil {
         sp = context.getSharedPreferences("sexy_girl", Context.MODE_PRIVATE);
     }
 
-    public static String getLastUGril(){
+    public static String getLastUGirl(){
         return sp.getString("last_ugirl", null);
     }
 
-    public static void setLastUGril(String info){
+    public static void setLastUGirl(String info){
         sp.edit().putString("last_ugirl", info).commit();
+    }
+
+    public static String getLastTGirl(){
+        return sp.getString("last_tgirl", null);
+    }
+
+    public static void setLastTGirl(String info){
+        sp.edit().putString("last_tgirl", info).commit();
     }
 
     public static boolean isFirst(){

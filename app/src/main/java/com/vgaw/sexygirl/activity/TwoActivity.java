@@ -9,8 +9,10 @@ import android.widget.ListView;
 import com.vgaw.sexygirl.R;
 import com.vgaw.sexygirl.adapter.EasyAdapter;
 import com.vgaw.sexygirl.adapter.EasyHolder;
+import com.vgaw.sexygirl.fragment.OneFragment;
 import com.vgaw.sexygirl.holder.TwoHolder;
 import com.vgaw.sexygirl.spider.DataSpider;
+import com.vgaw.sexygirl.spider.TGirlTwoSpider;
 import com.vgaw.sexygirl.spider.UGirlTwoSpider;
 import com.vgaw.sexygirl.ui.loadmore.LoadMoreContainer;
 import com.vgaw.sexygirl.ui.loadmore.LoadMoreHandler;
@@ -29,6 +31,7 @@ import java.util.ArrayList;
  * 变量           类型          描述
  * url            String        首页网址
  * title          String        标题
+ * category       int           分类
  *
  * intent返参：
  * 变量       类型          描述
@@ -62,12 +65,7 @@ public class TwoActivity extends BaseActivity {
         String url = intent.getStringExtra("url");
         proUrl(url);
 
-        spider = new UGirlTwoSpider() {
-            @Override
-            protected String getUrl(int index) {
-                return url_prefix + index + url_suffix;
-            }
-        };
+        initCategory(intent.getIntExtra("category", OneFragment.CATEGORY_UGIRL));
         dataList = spider.getDataList();
         lv = (ListView) findViewById(R.id.lv);
         adapter = new EasyAdapter(this, dataList) {
@@ -79,6 +77,29 @@ public class TwoActivity extends BaseActivity {
         lv.setAdapter(adapter);
 
         getNext();
+    }
+
+    private void initCategory(int category){
+        switch (category){
+            // 推女郎
+            case OneFragment.CATEGORY_TGIRL:
+                spider = new TGirlTwoSpider() {
+                    @Override
+                    protected String getUrl(int index) {
+                        return url_prefix + index + url_suffix;
+                    }
+                };
+                break;
+            // 尤果网
+            case OneFragment.CATEGORY_UGIRL:
+                spider = new UGirlTwoSpider() {
+                    @Override
+                    protected String getUrl(int index) {
+                        return url_prefix + index + url_suffix;
+                    }
+                };
+                break;
+        }
     }
 
     private void initRefreshView() {
