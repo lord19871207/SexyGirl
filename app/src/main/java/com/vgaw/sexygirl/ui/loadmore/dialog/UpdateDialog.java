@@ -13,13 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
-import com.vgaw.sexygirl.HttpUtil;
+import com.vgaw.sexygirl.Utils.HttpUtil;
 import com.vgaw.sexygirl.R;
-import com.vgaw.sexygirl.Utils.FileUtil;
 import com.vgaw.sexygirl.Utils.Utils;
 import com.vgaw.sexygirl.bean.FOTABean;
 

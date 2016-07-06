@@ -1,6 +1,8 @@
 package com.vgaw.sexygirl.spider;
 
 import com.vgaw.sexygirl.Utils.Utils;
+import com.vgaw.sexygirl.bean.BaseBean;
+import com.vgaw.sexygirl.bean.UGirlTwoBean;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,7 +13,7 @@ import java.io.StringReader;
  * to : caojinmail@163.com
  * me : github.com/VolodymyrCj/
  */
-public abstract class UGirlTwoSpider extends DataSpider<String> {
+public abstract class UGirlTwoSpider extends DataSpider<BaseBean> {
     @Override
     protected void proPage(String response, DataSpiderListener listener) {
         BufferedReader reader = new BufferedReader(new StringReader(response));
@@ -20,7 +22,10 @@ public abstract class UGirlTwoSpider extends DataSpider<String> {
         try {
             while ((temp = reader.readLine()) != null){
                 if (temp.contains(getTemplete())){
-                    dataList.add(Utils.findValueByKey(temp, "src").get(0));
+                    UGirlTwoBean bean = new UGirlTwoBean();
+                    bean.setUrl(Utils.findValueByKey(temp, "src").get(0));
+                    bean.setStatus(UGirlTwoBean.STATUS_NONE);
+                    dataList.add(bean);
                     hasMore = true;
                 }
             }

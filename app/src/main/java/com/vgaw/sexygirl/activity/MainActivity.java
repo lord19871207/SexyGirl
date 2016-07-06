@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.alibaba.fastjson.JSON;
 import com.vgaw.sexygirl.BugHD;
+import com.vgaw.sexygirl.Category;
 import com.vgaw.sexygirl.R;
 import com.vgaw.sexygirl.Utils.PreferenceUtil;
 import com.vgaw.sexygirl.Utils.Utils;
@@ -58,12 +59,12 @@ public class MainActivity extends BaseActivity {
                     // 推女郎
                     case R.id.nav_tuigirl:
                         changeFragment(oneFragment, OneFragment.TAG);
-                        oneFragment.changeCategory(OneFragment.CATEGORY_TGIRL);
+                        oneFragment.changeCategory(Category.CATEGORY_TGIRL);
                         break;
                     // 尤果网
                     case R.id.nav_ugirl:
                         changeFragment(oneFragment, OneFragment.TAG);
-                        oneFragment.changeCategory(OneFragment.CATEGORY_UGIRL);
+                        oneFragment.changeCategory(Category.CATEGORY_UGIRL);
                         break;
                     // 在线
                     case R.id.nav_online:

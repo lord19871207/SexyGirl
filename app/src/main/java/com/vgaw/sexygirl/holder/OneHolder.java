@@ -17,8 +17,8 @@ import com.vgaw.sexygirl.bean.UGrilOneBean;
  * me : github.com/VolodymyrCj/
  */
 public class OneHolder extends EasyHolder {
-    private ImageView iv_head_item;
-    private TextView tv_title_item;
+    protected ImageView iv_head_item;
+    protected TextView tv_title_item;
 
     @Override
     public int getLayout() {

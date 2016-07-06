@@ -7,4 +7,12 @@
         android:id="@+id/iv_head_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/iv_download"
+        android:layout_width="@dimen/space_64"
+        android:layout_height="@dimen/space_64"
+        android:src="@mipmap/download"
+        android:alpha="0"
+        android:layout_gravity="center"/>
 </FrameLayout>

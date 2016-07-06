@@ -1,7 +1,7 @@
 package com.vgaw.sexygirl.service;
 
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
-import com.vgaw.sexygirl.HttpUtil;
+import com.vgaw.sexygirl.Utils.HttpUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -28,10 +28,10 @@ public class DownloadService {
         return instance;
     }
 
-    public void addDownloadTask(final String url, String path){
+    public void addDownloadTask(final String url, File path){
         if (dataMap.get(url) == null){
             dataMap.put(url, 0);
-            HttpUtil.get(url, null, new FileAsyncHttpResponseHandler(new File(path)) {
+            HttpUtil.get(url, null, new FileAsyncHttpResponseHandler(path) {
                 @Override
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, File file) {
                     dataMap.remove(url);

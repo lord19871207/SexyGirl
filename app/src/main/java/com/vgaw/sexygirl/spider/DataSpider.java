@@ -1,7 +1,7 @@
 package com.vgaw.sexygirl.spider;
 
 import com.loopj.android.http.TextHttpResponseHandler;
-import com.vgaw.sexygirl.HttpUtil;
+import com.vgaw.sexygirl.Utils.HttpUtil;
 
 import java.util.ArrayList;
 

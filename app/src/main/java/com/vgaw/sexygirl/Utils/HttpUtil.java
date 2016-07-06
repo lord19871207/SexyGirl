@@ -1,4 +1,4 @@
-package com.vgaw.sexygirl;
+package com.vgaw.sexygirl.Utils;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;

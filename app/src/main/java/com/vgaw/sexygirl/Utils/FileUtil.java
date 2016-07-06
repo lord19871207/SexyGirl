@@ -3,10 +3,9 @@ package com.vgaw.sexygirl.Utils;
 import android.content.Context;
 import android.os.Environment;
 
+import com.vgaw.sexygirl.Category;
+
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 
 /**
  * from : Volodymyr
@@ -29,6 +28,31 @@ public class FileUtil {
             return true;
         }
         return false;
+    }
+
+    public static File getPicFile(int category, String albumName, String picName){
+        String categoryName = null;
+        switch (category){
+            case Category.CATEGORY_UGIRL:
+                categoryName = "尤果网";
+                break;
+            case Category.CATEGORY_TGIRL:
+                categoryName = "推女郎";
+                break;
+        }
+        String dirPath = getRootDirPath()
+                + File.separator + categoryName
+                + File.separator + albumName;
+        File dir = new File(dirPath);
+        if (!dir.exists()){
+            dir.mkdirs();
+        }
+        return new File(dir, picName);
+    }
+
+    public static String getRootDirPath(){
+        return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath()
+                + File.separator + "SexyGirl";
     }
 
     /**

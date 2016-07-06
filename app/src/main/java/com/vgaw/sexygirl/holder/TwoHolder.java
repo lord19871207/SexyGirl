@@ -1,19 +1,22 @@
 package com.vgaw.sexygirl.holder;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Log;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.view.View;
+import android.view.animation.AnticipateOvershootInterpolator;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
-import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.vgaw.sexygirl.R;
 import com.vgaw.sexygirl.Utils.DensityUtil;
-import com.vgaw.sexygirl.Utils.ImageUtil;
 import com.vgaw.sexygirl.adapter.EasyHolder;
+import com.vgaw.sexygirl.bean.UGirlTwoBean;
 
 /**
  * from : Volodymyr
@@ -23,7 +26,8 @@ import com.vgaw.sexygirl.adapter.EasyHolder;
 
 // 290 * 435
 public class TwoHolder extends EasyHolder{
-    private ImageView iv_head_item;
+    protected ImageView iv_head_item;
+    protected ImageView iv_download;
 
     @Override
     public int getLayout() {
@@ -33,12 +37,27 @@ public class TwoHolder extends EasyHolder{
     @Override
     public View createView() {
         iv_head_item = (ImageView) view.findViewById(R.id.iv_head_item);
+        iv_download = (ImageView) view.findViewById(R.id.iv_download);
         return view;
     }
 
     @Override
     public void refreshView(Object item) {
-        String url = (String) item;
-        ImageLoader.getInstance().displayImage(url, iv_head_item, new ImageSize(DensityUtil.getScreenWidth(context), DensityUtil.getScreenWidth(context)));
+        UGirlTwoBean bean = (UGirlTwoBean) item;
+        ImageLoader.getInstance().displayImage(bean.getUrl(), iv_head_item, new ImageSize(DensityUtil.getScreenWidth(context), DensityUtil.getScreenWidth(context)));
+        int status = bean.getStatus();
+        if (status == UGirlTwoBean.STATUS_READY){
+            animate();
+            bean.setStatus(UGirlTwoBean.STATUS_DONE);
+        }
+    }
+
+    private void animate(){
+        PropertyValuesHolder alphaHolder = PropertyValuesHolder.ofFloat("alpha", 0, 1, 0);
+        PropertyValuesHolder scaleHolder = PropertyValuesHolder.ofFloat("scaleX", 1, (float) 1.5, 1);
+        ObjectAnimator showAnimator = ObjectAnimator.ofPropertyValuesHolder(iv_download, alphaHolder, scaleHolder);
+        showAnimator.setInterpolator(new LinearInterpolator());
+        showAnimator.setDuration(1500);
+        showAnimator.start();
     }
 }

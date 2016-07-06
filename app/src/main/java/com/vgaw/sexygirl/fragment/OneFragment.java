@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.vgaw.sexygirl.Category;
 import com.vgaw.sexygirl.R;
 import com.vgaw.sexygirl.Utils.Utils;
 import com.vgaw.sexygirl.activity.TwoActivity;
@@ -34,16 +35,13 @@ import java.util.ArrayList;
 public class OneFragment extends Fragment {
     public static final String TAG = "onefragment";
 
-    public static final int CATEGORY_UGIRL = 1;
-    public static final int CATEGORY_TGIRL = 2;
-
     private LoadMoreGridViewContainer gridViewContainer;
     private GridView gv;
     private EasyAdapter adapter;
     private ArrayList<UGrilOneBean> dataList = null;
     private DataSpider spider;
     private int index = 1;
-    private int category = OneFragment.CATEGORY_UGIRL;
+    private int category = Category.CATEGORY_UGIRL;
 
     @Nullable
     @Override
@@ -64,22 +62,23 @@ public class OneFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getContext(), TwoActivity.class);
                 intent.putExtra("url", dataList.get(position).getNextUrl());
+                intent.putExtra("title", dataList.get(position).getPicName());
                 intent.putExtra("category", category);
                 startActivity(intent);
             }
         });
-        initCategory(CATEGORY_UGIRL);
+        initCategory(Category.CATEGORY_UGIRL);
     }
 
     private void initCategory(int category){
         this.category = category;
         switch (category){
             // 尤果网
-            case CATEGORY_UGIRL:
+            case Category.CATEGORY_UGIRL:
                 spider = new UGirlOneSpider();
                 break;
             // 推女郎
-            case CATEGORY_TGIRL:
+            case Category.CATEGORY_TGIRL:
                 spider = new TGirlOneSpider();
                 break;
         }
