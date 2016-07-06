@@ -1,6 +1,8 @@
 package com.vgaw.sexygirl.Utils;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * from : Volodymyr
@@ -12,24 +14,11 @@ public class ScanEngine {
         return false;
     }
 
-    public static String[] getCategory(){
-        File rootDir = new File(FileUtil.getRootDirPath());
-        if (!rootDir.exists()){
+    public static String[] get(List<String> pathList){
+        File file = new File(FileUtil.getRootDirPath() + Utils.proListToPath(pathList));
+        if (!file.exists()){
             return null;
         }
-        return rootDir.list();
-    }
-
-    public static String[] getAlbum(String categoryName){
-        File categoryFile = new File(FileUtil.getRootDirPath()
-                + File.separator + categoryName);
-        return categoryFile.list();
-    }
-
-    public static String[] getPic(String categoryName, String albumName){
-        File albumFile = new File(FileUtil.getRootDirPath()
-                + File.separator + categoryName
-                + File.separator + albumName);
-        return albumFile.list();
+        return file.list();
     }
 }

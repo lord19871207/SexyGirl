@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * from : Volodymyr
@@ -84,5 +85,21 @@ public class Utils {
                 : unit == MB_SD_CARD_SIZE ? size / MB_SD_CARD_SIZE
                 : unit == KB_SD_CARD_SIZE ? size / KB_SD_CARD_SIZE
                 : size / B_SD_CARD_SIZE;
+    }
+
+    public static void putStringArrayToList(ArrayList<String> list, String[] array){
+        if (array != null) {
+            for (String s : array) {
+                list.add(s);
+            }
+        }
+    }
+
+    public static String proListToPath(List<String> pathList){
+        StringBuilder path = new StringBuilder();
+        for (String s : pathList){
+            path.append(File.separator + s);
+        }
+        return path.toString();
     }
 }

@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.alibaba.fastjson.JSON;
@@ -22,12 +21,12 @@ import com.vgaw.sexygirl.fragment.LocalOneFragment;
 import com.vgaw.sexygirl.fragment.OneFragment;
 import com.vgaw.sexygirl.ui.loadmore.dialog.UpdateDialog;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import im.fir.sdk.VersionCheckCallback;
 
 public class MainActivity extends BaseActivity {
+    private long currentTime = -1;
+    private static final long DELAY = 1000;
+
     private OneFragment oneFragment;
     private LocalOneFragment localOneFragment;
     private DownloadFragment downloadFragment;
@@ -131,8 +130,16 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
+        long temp = System.currentTimeMillis();
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
+        } else if (localOneFragment != null && !localOneFragment.isHidden()){
+            if (localOneFragment.callBack()){
+                super.onBackPressed();
+            }
+        } else if (temp - currentTime > DELAY){
+            Utils.showToast(this, "再次点击退出程序");
+            currentTime = temp;
         } else {
             super.onBackPressed();
         }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_50"
+        android:background="@color/half_transparent">
+
+        <FrameLayout
+            android:id="@+id/v_back"
+            android:layout_width="@dimen/space_60"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="@dimen/space_30"
+                android:layout_height="@dimen/space_20"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/space_10"
+                android:src="@mipmap/back" />
+        </FrameLayout>
+    </RelativeLayout>
+</FrameLayout>
