@@ -20,6 +20,7 @@ import com.vgaw.sexygirl.service.DownloadService;
 import com.vgaw.sexygirl.spider.DataSpider;
 import com.vgaw.sexygirl.spider.TGirlTwoSpider;
 import com.vgaw.sexygirl.spider.UGirlTwoSpider;
+import com.vgaw.sexygirl.ui.SharePop;
 import com.vgaw.sexygirl.ui.loadmore.LoadMoreContainer;
 import com.vgaw.sexygirl.ui.loadmore.LoadMoreHandler;
 import com.vgaw.sexygirl.ui.loadmore.LoadMoreListViewContainer;
@@ -86,6 +87,16 @@ public class TwoActivity extends BaseActivity {
                 bean.setStatus(UGirlTwoBean.STATUS_READY);
                 adapter.notifyDataSetChanged();
                 DownloadService.getInstance().addDownloadTask(bean.getUrl(), FileUtil.getPicFile(category, albumName, getPicName(bean.getUrl())));
+            }
+        });
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                UGirlTwoBean bean = ((UGirlTwoBean)dataList.get(position));
+                new SharePop(TwoActivity.this, mTencent)
+                        .setData("SexyGirl", albumName, bean.getUrl(), bean.getUrl())
+                        .show();
+                return true;
             }
         });
         adapter = new EasyAdapter(this, dataList) {
