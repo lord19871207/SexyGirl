@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,10 +72,8 @@ public class SharePop {
         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
         popupWindow.setOutsideTouchable(true);
 
-        WindowManager windowManager = (WindowManager) mActivity.getSystemService(Context.WINDOW_SERVICE);
-        int height = windowManager.getDefaultDisplay().getHeight();
         // 设置好参数之后再show
-        popupWindow.showAtLocation(view, Gravity.NO_GRAVITY, 0, height - popupWindow.getHeight());
+        popupWindow.showAtLocation(view, Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0);
 
     }
 

@@ -26,6 +26,24 @@
         <activity android:name=".activity.PicViewActivity"/>
         <activity android:name=".activity.FeedbackActivity"/>
         <activity android:name=".activity.LocalTwoActivity"/>
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1104811677" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <meta-data android:value="f6a95d9ae8ba3037d4934073f12593e1" android:name="BUG_HD_SDK_GENERAL_KEY" />
     </application>
