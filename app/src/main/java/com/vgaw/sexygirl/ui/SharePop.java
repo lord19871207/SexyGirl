@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
@@ -48,16 +49,19 @@ public class SharePop {
     private IWXAPI api;
     private Tencent mTencent;
 
+    private View view;
+
     public SharePop(Activity mActivity, Tencent mTencent){
         this.mActivity = mActivity;
         this.mTencent = mTencent;
         api = WXAPIFactory.createWXAPI(mActivity, WX_APP_ID, true);
         api.registerApp(WX_APP_ID);
+        init();
     }
 
-    public void show(){
+    private void init(){
         LayoutInflater inflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.share_pop, null);
+        view = inflater.inflate(R.layout.share_pop, null);
         LinearLayout btn_wxhy = (LinearLayout) view.findViewById(R.id.btn_wxhy);
         LinearLayout btn_wxpy = (LinearLayout) view.findViewById(R.id.btn_wxpy);
         LinearLayout btn_qqhy = (LinearLayout) view.findViewById(R.id.btn_qqhy);
@@ -66,15 +70,17 @@ public class SharePop {
         btn_wxpy.setOnClickListener(listener);
         btn_qqhy.setOnClickListener(listener);
         btn_qqkj.setOnClickListener(listener);
+        view.setOnClickListener(listener);
 
-        popupWindow = new PopupWindow(view, LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#ffffff")));
+        popupWindow = new PopupWindow(view, FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(mActivity.getResources().getColor(R.color.half_transparent)));
         popupWindow.setOutsideTouchable(true);
+    }
 
+    public void show(){
         // 设置好参数之后再show
         popupWindow.showAtLocation(view, Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0);
-
     }
 
     View.OnClickListener listener = new View.OnClickListener() {
@@ -169,7 +175,7 @@ public class SharePop {
         //手Q客户端顶部，替换“返回”按钮文字，如果为空，用返回代替
         bundle.putString("appName", mActivity.getResources().getString(R.string.app_name));
         //标识该消息的来源应用，值为应用名称+AppId。
-        bundle.putString("appSource", "365橙融网" + QQ_APP_ID);
+        bundle.putString("appSource", mActivity.getResources().getString(R.string.app_name) + QQ_APP_ID);
 
         ThreadManager.getMainHandler().post(new Runnable() {
             @Override

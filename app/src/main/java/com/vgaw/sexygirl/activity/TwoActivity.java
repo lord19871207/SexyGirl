@@ -14,7 +14,6 @@ import com.vgaw.sexygirl.adapter.EasyAdapter;
 import com.vgaw.sexygirl.adapter.EasyHolder;
 import com.vgaw.sexygirl.bean.BaseBean;
 import com.vgaw.sexygirl.bean.UGirlTwoBean;
-import com.vgaw.sexygirl.fragment.OneFragment;
 import com.vgaw.sexygirl.holder.TwoHolder;
 import com.vgaw.sexygirl.service.DownloadService;
 import com.vgaw.sexygirl.spider.DataSpider;
@@ -58,6 +57,8 @@ public class TwoActivity extends BaseActivity {
     private String albumName = null;
     private int category;
 
+    private SharePop sharePop;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +70,7 @@ public class TwoActivity extends BaseActivity {
                 finish();
             }
         });
+        sharePop = new SharePop(TwoActivity.this, mTencent);
         initRefreshView();
 
         Intent intent = getIntent();
@@ -93,9 +95,7 @@ public class TwoActivity extends BaseActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 UGirlTwoBean bean = ((UGirlTwoBean)dataList.get(position));
-                new SharePop(TwoActivity.this, mTencent)
-                        .setData("SexyGirl", albumName, bean.getUrl(), bean.getUrl())
-                        .show();
+                sharePop.setData("SexyGirl", albumName, bean.getUrl(), bean.getUrl()).show();
                 return true;
             }
         });
