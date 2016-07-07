@@ -91,14 +91,14 @@ public class TwoActivity extends BaseActivity {
                 DownloadService.getInstance().addDownloadTask(bean.getUrl(), FileUtil.getPicFile(category, albumName, getPicName(bean.getUrl())));
             }
         });
-        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        /*lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 UGirlTwoBean bean = ((UGirlTwoBean)dataList.get(position));
                 sharePop.setData("SexyGirl", albumName, bean.getUrl(), bean.getUrl()).show();
                 return true;
             }
-        });
+        });*/
         adapter = new EasyAdapter(this, dataList) {
             @Override
             public EasyHolder getHolder(int type) {
