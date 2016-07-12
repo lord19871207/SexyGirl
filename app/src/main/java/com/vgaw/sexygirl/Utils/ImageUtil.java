@@ -15,7 +15,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 public class ImageUtil {
     public static void init(Context context) {
         DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .cacheInMemory(true)
+                .cacheInMemory(false)
                 .build();
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
                 .defaultDisplayImageOptions(options)

@@ -133,10 +133,7 @@ public class MainActivity extends BaseActivity {
         long temp = System.currentTimeMillis();
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
-        } else if (localOneFragment != null && !localOneFragment.isHidden()){
-            if (localOneFragment.callBack()){
-                super.onBackPressed();
-            }
+        } else if (localOneFragment != null && !localOneFragment.isHidden() && !localOneFragment.callBack()){
         } else if (temp - currentTime > DELAY){
             Utils.showToast(this, "再次点击退出程序");
             currentTime = temp;
