@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/iv_head_item"
-        android:layout_width="@dimen/space_100"
-        android:layout_height="@dimen/space_100" />
+        android:layout_width="@dimen/space_80"
+        android:layout_height="@dimen/space_80" />
 
     <TextView
         android:id="@+id/tv_title_item"
@@ -20,5 +20,6 @@
         android:layout_marginTop="@dimen/space_10"
         android:singleLine="true"
         android:textSize="@dimen/txt_14"
-        android:textColor="@color/dark_gray"/>
+        android:textColor="@color/dark_gray"
+        android:gravity="center"/>
 </RelativeLayout>

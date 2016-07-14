@@ -22,7 +22,7 @@
                 <item
                     android:id="@+id/nav_gentleman"
                     android:icon="@mipmap/ic_launcher"
-                    android:title="绅士" />
+                    android:title="切换为绅士" />
                 <item
                     android:id="@+id/nav_local"
                     android:icon="@mipmap/ic_launcher"

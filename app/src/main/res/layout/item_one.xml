@@ -20,5 +20,6 @@
         android:layout_marginTop="@dimen/space_10"
         android:singleLine="true"
         android:textSize="@dimen/txt_16"
-        android:textColor="@color/dark_gray"/>
+        android:textColor="@color/dark_gray"
+        android:gravity="center"/>
 </RelativeLayout>

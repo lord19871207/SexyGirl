@@ -68,6 +68,22 @@ public class OneFragment extends Fragment {
         initCategory(Category.CATEGORY_UGIRL);
     }
 
+    /**
+     * 切换mask
+     */
+    public void updateMask(){
+        adapter.notifyDataSetChanged();
+    }
+
+    public void changeCategoryAndRefresh(int category, boolean isRefresh){
+        if (this.category != category){
+            this.category = category;
+            if (isRefresh){
+                initCategory(category);
+            }
+        }
+    }
+
     private void initCategory(int category){
         this.category = category;
         switch (category){
@@ -82,7 +98,7 @@ public class OneFragment extends Fragment {
         }
         index = 1;
         if (dataList != null){
-            dataList.clear();
+            dataList = null;
         }
         dataList = spider.getDataList();
         adapter = new EasyAdapter(getContext(), dataList) {
@@ -94,10 +110,6 @@ public class OneFragment extends Fragment {
         gv.setAdapter(adapter);
 
         getNext();
-    }
-
-    public void changeCategory(int category){
-        initCategory(category);
     }
 
     private void initRefreshView(View view) {

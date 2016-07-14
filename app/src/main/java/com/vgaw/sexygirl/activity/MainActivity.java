@@ -59,20 +59,22 @@ public class MainActivity extends BaseActivity {
                 switch (item.getItemId()){
                     // 推女郎
                     case R.id.nav_tuigirl:
+                        oneFragment.changeCategoryAndRefresh(Category.CATEGORY_TGIRL, currentFragment == oneFragment);
                         changeFragment(oneFragment, OneFragment.TAG);
-                        oneFragment.changeCategory(Category.CATEGORY_TGIRL);
                         break;
                     // 尤果网
                     case R.id.nav_ugirl:
+                        oneFragment.changeCategoryAndRefresh(Category.CATEGORY_UGIRL, currentFragment == oneFragment);
                         changeFragment(oneFragment, OneFragment.TAG);
-                        oneFragment.changeCategory(Category.CATEGORY_UGIRL);
                         break;
                     // 绅士
                     case R.id.nav_gentleman:
                         boolean isPicMask = PreferenceUtil.isPicMask();
-                        item.setTitle(isPicMask ? "正常" : "绅士");
+                        item.setTitle(isPicMask ? "切换为绅士" : "切换为正常");
                         PreferenceUtil.setPicMask(!isPicMask);
-                        changeFragment(oneFragment, OneFragment.TAG);
+                        if (currentFragment == oneFragment){
+                            oneFragment.updateMask();
+                        }
                         break;
                     // 本地
                     case R.id.nav_local:
