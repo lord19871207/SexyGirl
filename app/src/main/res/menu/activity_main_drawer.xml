@@ -20,9 +20,9 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_online"
+                    android:id="@+id/nav_gentleman"
                     android:icon="@mipmap/ic_launcher"
-                    android:title="在线" />
+                    android:title="绅士" />
                 <item
                     android:id="@+id/nav_local"
                     android:icon="@mipmap/ic_launcher"
@@ -34,10 +34,6 @@
     <item android:title="其他">
         <menu>
             <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/nav_download"
-                    android:icon="@mipmap/ic_launcher"
-                    android:title="下载" />
                 <item
                     android:id="@+id/nav_feedback"
                     android:icon="@mipmap/ic_launcher"

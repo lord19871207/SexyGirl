@@ -50,4 +50,12 @@ public class PreferenceUtil {
     public static void setVersion(Context context){
         sp.edit().putInt("versionCode", Utils.getVersionCode(context)).commit();
     }
+
+    public static boolean isPicMask(){
+        return sp.getBoolean("isPicMask", true);
+    }
+
+    public static void setPicMask(boolean isPicMask){
+        sp.edit().putBoolean("isPicMask", isPicMask).commit();
+    }
 }

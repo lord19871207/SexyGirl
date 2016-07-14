@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:gravity="center_horizontal">
 
     <ImageView
         android:id="@+id/iv_head_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
 
     <TextView
         android:id="@+id/tv_title_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/iv_head_item"
+        android:layout_alignRight="@id/iv_head_item"
+        android:layout_below="@id/iv_head_item"
+        android:layout_marginTop="10dp"
+        android:singleLine="true"
         android:textSize="16sp"
-        android:textColor="@color/dark_gray"
-        android:layout_marginTop="10dp"/>
-</LinearLayout>
+        android:textColor="@color/dark_gray"/>
+</RelativeLayout>

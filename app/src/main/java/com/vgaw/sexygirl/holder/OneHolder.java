@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.vgaw.sexygirl.R;
 import com.vgaw.sexygirl.Utils.ImageUtil;
+import com.vgaw.sexygirl.Utils.PreferenceUtil;
 import com.vgaw.sexygirl.adapter.EasyHolder;
 import com.vgaw.sexygirl.bean.UGrilOneBean;
 
@@ -37,6 +38,10 @@ public class OneHolder extends EasyHolder {
     public void refreshView(Object item) {
         UGrilOneBean bean = (UGrilOneBean) item;
         tv_title_item.setText(bean.getPicName());
-        ImageLoader.getInstance().displayImage(bean.getPicUrl(), iv_head_item);
+        if (PreferenceUtil.isPicMask()){
+            iv_head_item.setImageResource(R.mipmap.pic_mask);
+        }else {
+            ImageLoader.getInstance().displayImage(bean.getPicUrl(), iv_head_item, ImageUtil.getAblumOptions());
+        }
     }
 }

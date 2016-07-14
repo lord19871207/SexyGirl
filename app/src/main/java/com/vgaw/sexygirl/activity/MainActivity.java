@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.alibaba.fastjson.JSON;
@@ -29,7 +30,6 @@ public class MainActivity extends BaseActivity {
 
     private OneFragment oneFragment;
     private LocalOneFragment localOneFragment;
-    private DownloadFragment downloadFragment;
     private DrawerLayout drawerLayout;
     private Fragment currentFragment;
     @Override
@@ -42,7 +42,6 @@ public class MainActivity extends BaseActivity {
 
         oneFragment = new OneFragment();
         localOneFragment = new LocalOneFragment();
-        downloadFragment = new DownloadFragment();
 
         changeFragment(oneFragment, OneFragment.TAG);
     }
@@ -65,17 +64,16 @@ public class MainActivity extends BaseActivity {
                         changeFragment(oneFragment, OneFragment.TAG);
                         oneFragment.changeCategory(Category.CATEGORY_UGIRL);
                         break;
-                    // 在线
-                    case R.id.nav_online:
+                    // 绅士
+                    case R.id.nav_gentleman:
+                        boolean isPicMask = PreferenceUtil.isPicMask();
+                        item.setTitle(isPicMask ? "正常" : "绅士");
+                        PreferenceUtil.setPicMask(!isPicMask);
                         changeFragment(oneFragment, OneFragment.TAG);
                         break;
                     // 本地
                     case R.id.nav_local:
                         changeFragment(localOneFragment, LocalOneFragment.TAG);
-                        break;
-                    // 下载
-                    case R.id.nav_download:
-                        changeFragment(downloadFragment, DownloadFragment.TAG);
                         break;
                     // 反馈
                     case R.id.nav_feedback:
@@ -118,12 +116,17 @@ public class MainActivity extends BaseActivity {
         }
         FragmentManager manager = getSupportFragmentManager();
         if (currentFragment != null){
-            manager.beginTransaction().hide(currentFragment).commit();
+            // 减少缓存使用
+            if (currentFragment == oneFragment){
+                manager.beginTransaction().remove(currentFragment).commit();
+            }else {
+                manager.beginTransaction().hide(currentFragment).commit();
+            }
         }
         Fragment f = manager.findFragmentByTag(tag);
         if (f == null){
             manager.beginTransaction().add(R.id.container, fragment, tag).commit();
-        }else if (f.isHidden()){
+        }else {
             manager.beginTransaction().show(fragment).commit();
         }
         currentFragment = fragment;
@@ -154,11 +157,5 @@ public class MainActivity extends BaseActivity {
                 }
             }
         });
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        currentFragment = null;
     }
 }

@@ -16,12 +16,7 @@ public class BugHD {
     }
 
     public static void sendUDInfo(String info) {
-        FIR.sendCrashManually(new FeedBack(info));
-    }
-
-    public static class FeedBack extends Throwable{
-        public FeedBack(String info){
-            super(info);
-        }
+        FIR.addCustomizeValue("Feedback", info);
+        FIR.sendCrashManually(new Exception());
     }
 }

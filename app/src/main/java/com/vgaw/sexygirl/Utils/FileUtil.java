@@ -30,6 +30,11 @@ public class FileUtil {
         return false;
     }
 
+    public static File getCacheFile(){
+        return new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath()
+                + File.separator + "SexyGirl_Cache");
+    }
+
     public static File getPicFile(int category, String albumName, String picName){
         String categoryName = null;
         switch (category){

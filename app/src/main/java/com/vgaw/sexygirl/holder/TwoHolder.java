@@ -15,6 +15,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageSize;
 import com.vgaw.sexygirl.R;
 import com.vgaw.sexygirl.Utils.DensityUtil;
+import com.vgaw.sexygirl.Utils.PreferenceUtil;
 import com.vgaw.sexygirl.adapter.EasyHolder;
 import com.vgaw.sexygirl.bean.UGirlTwoBean;
 
@@ -43,12 +44,16 @@ public class TwoHolder extends EasyHolder{
 
     @Override
     public void refreshView(Object item) {
-        UGirlTwoBean bean = (UGirlTwoBean) item;
-        ImageLoader.getInstance().displayImage(bean.getUrl(), iv_head_item, new ImageSize(DensityUtil.getScreenWidth(context), DensityUtil.getScreenWidth(context)));
-        int status = bean.getStatus();
-        if (status == UGirlTwoBean.STATUS_READY){
-            animate();
-            bean.setStatus(UGirlTwoBean.STATUS_DONE);
+        if (PreferenceUtil.isPicMask()){
+            iv_head_item.setImageResource(R.mipmap.pic_mask);
+        }else {
+            UGirlTwoBean bean = (UGirlTwoBean) item;
+            ImageLoader.getInstance().displayImage(bean.getUrl(), iv_head_item, new ImageSize(DensityUtil.getScreenWidth(context), DensityUtil.getScreenWidth(context)));
+            int status = bean.getStatus();
+            if (status == UGirlTwoBean.STATUS_READY){
+                animate();
+                bean.setStatus(UGirlTwoBean.STATUS_DONE);
+            }
         }
     }
 
