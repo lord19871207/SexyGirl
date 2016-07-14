@@ -55,7 +55,6 @@ public class OneFragment extends Fragment {
         initRefreshView(getView());
 
         gv = (GridView) getView().findViewById(R.id.gv);
-        gv.setNumColumns(GridView.AUTO_FIT);
         gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -142,4 +142,8 @@
     <dimen name="space_98">98dp</dimen>
     <dimen name="space_99">99dp</dimen>
     <dimen name="space_100">100dp</dimen>
+
+    <dimen name="space_120">120dp</dimen>
+    <dimen name="space_150">150dp</dimen>
+    <dimen name="space_170">170dp</dimen>
 </resources>

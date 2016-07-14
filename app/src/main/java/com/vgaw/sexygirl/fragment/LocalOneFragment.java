@@ -1,6 +1,7 @@
 package com.vgaw.sexygirl.fragment;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -48,11 +49,15 @@ public class LocalOneFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         tv_path = (TextView) getView().findViewById(R.id.tv_path);
         gv = (GridView) getView().findViewById(R.id.gv);
-        gv.setNumColumns(2);
         adapter = new EasyAdapter(getContext(), dataList) {
             @Override
             public EasyHolder getHolder(int type) {
                 return new OneHolder(){
+                    @Override
+                    public int getLayout() {
+                        return R.layout.item_one_local;
+                    }
+
                     @Override
                     public void refreshView(Object item) {
                         iv_head_item.setImageResource(R.mipmap.dir);

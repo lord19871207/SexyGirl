@@ -143,4 +143,8 @@
     <dimen name="space_98">176dp</dimen>
     <dimen name="space_99">178dp</dimen>
     <dimen name="space_100">180dp</dimen>
+
+    <dimen name="space_120">216dp</dimen>
+    <dimen name="space_150">270dp</dimen>
+    <dimen name="space_170">306dp</dimen>
 </resources>
