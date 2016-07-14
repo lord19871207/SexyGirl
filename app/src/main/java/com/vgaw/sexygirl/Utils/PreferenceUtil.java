@@ -3,6 +3,8 @@ package com.vgaw.sexygirl.Utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.tencent.open.utils.Util;
+
 /**
  * from : Volodymyr
  * to : caojinmail@163.com
@@ -37,5 +39,15 @@ public class PreferenceUtil {
 
     public static void setFirst(){
         sp.edit().putBoolean("isFirst", false).commit();
+    }
+
+    public static boolean isVersionChanged(Context context){
+        int nowVersion = Utils.getVersionCode(context);
+        int lastVersion = sp.getInt("versionCode", -1);
+        return nowVersion != lastVersion;
+    }
+
+    public static void setVersion(Context context){
+        sp.edit().putInt("versionCode", Utils.getVersionCode(context)).commit();
     }
 }

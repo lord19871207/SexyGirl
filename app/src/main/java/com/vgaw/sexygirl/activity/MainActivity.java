@@ -93,15 +93,16 @@ public class MainActivity extends BaseActivity {
 
     /**
      * 为了防止第一次弹出动画和更新对话框同时打开，所以将更新放在此处
+     * 每次版本更新都要演示一次，防止第一次安装没有看到导致不知道需要演示的功能
      */
     private void proFirst(){
-        if (PreferenceUtil.isFirst()){
+        if (PreferenceUtil.isVersionChanged(this)){
             drawerLayout.openDrawer(GravityCompat.START);
             drawerLayout.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     drawerLayout.closeDrawer(GravityCompat.START);
-                    PreferenceUtil.setFirst();
+                    PreferenceUtil.setVersion(MainActivity.this);
 
                     checkUpdate();
                 }

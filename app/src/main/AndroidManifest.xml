@@ -44,8 +44,9 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="behind"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".activity.UpdateLogActivity"/>
 
-        <meta-data android:value="f6a95d9ae8ba3037d4934073f12593e1" android:name="BUG_HD_SDK_GENERAL_KEY" />
+        <meta-data android:value="5955d3777d964c2d8d15c2d0b9a281f6" android:name="BUG_HD_SDK_GENERAL_KEY" />
     </application>
 
 </manifest>
