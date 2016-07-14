@@ -35,13 +35,9 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_feedback"
+                    android:id="@+id/nav_about"
                     android:icon="@mipmap/ic_launcher"
-                    android:title="反馈" />
-                <item
-                    android:id="@+id/nav_quit"
-                    android:icon="@mipmap/ic_launcher"
-                    android:title="退出" />
+                    android:title="关于" />
             </group>
         </menu>
     </item>

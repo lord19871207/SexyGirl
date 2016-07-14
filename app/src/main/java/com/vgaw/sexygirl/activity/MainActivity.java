@@ -9,6 +9,9 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.vgaw.sexygirl.BugHD;
@@ -75,19 +78,33 @@ public class MainActivity extends BaseActivity {
                     case R.id.nav_local:
                         changeFragment(localOneFragment, LocalOneFragment.TAG);
                         break;
-                    // 反馈
-                    case R.id.nav_feedback:
-                        startActivity(new Intent(MainActivity.this, FeedbackActivity.class));
-                        break;
-                    // 退出
-                    case R.id.nav_quit:
-                        finish();
+                    // 关于
+                    case R.id.nav_about:
+                        Toast.makeText(MainActivity.this, "待开发", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return true;
             }
         });
+
+        findViewById(R.id.tv_feedback).setOnClickListener(clickListener);
+        findViewById(R.id.tv_quit).setOnClickListener(clickListener);
     }
+
+    private View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+            switch (v.getId()){
+                case R.id.tv_feedback:
+                    startActivity(new Intent(MainActivity.this, FeedbackActivity.class));
+                    break;
+                case R.id.tv_quit:
+                    finish();
+                    break;
+            }
+        }
+    };
 
     /**
      * 为了防止第一次弹出动画和更新对话框同时打开，所以将更新放在此处
