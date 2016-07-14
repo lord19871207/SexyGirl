@@ -34,12 +34,12 @@ public class ImageUtil {
     public static DisplayImageOptions getAblumOptions(){
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 //.showImageForEmptyUri(R.drawable.ic_empty) // resource or drawable
-                .cacheInMemory(false) // default
-                .cacheOnDisk(true) // default
+                .cacheInMemory(false)
+                .cacheOnDisk(true)
                 //.preProcessor()
                 //.postProcessor()
                 //.decodingOptions()
-                //.displayer(new SimpleBitmapDisplayer()) // default
+                //.displayer(new SimpleBitmapDisplayer())
                 .build();
         return options;
     }

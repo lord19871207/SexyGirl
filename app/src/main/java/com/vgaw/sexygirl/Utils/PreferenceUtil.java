@@ -52,7 +52,7 @@ public class PreferenceUtil {
     }
 
     public static boolean isPicMask(){
-        return sp.getBoolean("isPicMask", true);
+        return sp.getBoolean("isPicMask", false);
     }
 
     public static void setPicMask(boolean isPicMask){
