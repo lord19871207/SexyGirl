@@ -46,6 +46,7 @@ public class MainActivity extends BaseActivity {
         oneFragment = new OneFragment();
         localOneFragment = new LocalOneFragment();
 
+        oneFragment.changeCategoryAndRefresh(Category.CATEGORY_UGIRL, currentFragment == oneFragment);
         changeFragment(oneFragment, OneFragment.TAG);
     }
 

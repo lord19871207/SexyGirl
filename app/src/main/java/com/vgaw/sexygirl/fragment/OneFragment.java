@@ -41,7 +41,7 @@ public class OneFragment extends Fragment {
     private ArrayList<UGrilOneBean> dataList = null;
     private DataSpider spider;
     private int index = 1;
-    private int category = Category.CATEGORY_UGIRL;
+    private int category = Category.CATEGORY_NONE;
 
     @Nullable
     @Override
@@ -65,7 +65,7 @@ public class OneFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        initCategory(Category.CATEGORY_UGIRL);
+        initCategory();
     }
 
     /**
@@ -79,13 +79,12 @@ public class OneFragment extends Fragment {
         if (this.category != category){
             this.category = category;
             if (isRefresh){
-                initCategory(category);
+                initCategory();
             }
         }
     }
 
-    private void initCategory(int category){
-        this.category = category;
+    private void initCategory(){
         switch (category){
             // 尤果网
             case Category.CATEGORY_UGIRL:

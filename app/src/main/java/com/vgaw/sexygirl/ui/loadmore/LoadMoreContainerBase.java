@@ -69,7 +69,7 @@ public abstract class LoadMoreContainerBase extends LinearLayout implements Load
         mUpView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAbsListView.smoothScrollToPosition(0);
+                mAbsListView.setSelection(0);
             }
         });
     }

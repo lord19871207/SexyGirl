@@ -43,7 +43,8 @@ public abstract class UGirlTwoSpider extends DataSpider<BaseBean> {
     }
 
     protected String getTemplete(){
-        return "http://i.lesmao.com/i/les/T/UGirls";
+        // return "http://i.lesmao.com/i/les/T/UGirls";
+        return "http://i.lesmao.cc/i/les/T/UGirls";
     }
 
 }

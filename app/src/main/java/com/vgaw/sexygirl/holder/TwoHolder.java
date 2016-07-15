@@ -44,16 +44,16 @@ public class TwoHolder extends EasyHolder{
 
     @Override
     public void refreshView(Object item) {
+        UGirlTwoBean bean = (UGirlTwoBean) item;
         if (PreferenceUtil.isPicMask()){
             iv_head_item.setImageResource(R.mipmap.pic_mask);
         }else {
-            UGirlTwoBean bean = (UGirlTwoBean) item;
             ImageLoader.getInstance().displayImage(bean.getUrl(), iv_head_item, new ImageSize(DensityUtil.getScreenWidth(context), DensityUtil.getScreenWidth(context)));
-            int status = bean.getStatus();
-            if (status == UGirlTwoBean.STATUS_READY){
-                animate();
-                bean.setStatus(UGirlTwoBean.STATUS_DONE);
-            }
+        }
+        int status = bean.getStatus();
+        if (status == UGirlTwoBean.STATUS_READY){
+            animate();
+            bean.setStatus(UGirlTwoBean.STATUS_DONE);
         }
     }
 

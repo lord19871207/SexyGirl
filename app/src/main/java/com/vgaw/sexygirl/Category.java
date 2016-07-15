@@ -6,6 +6,7 @@ package com.vgaw.sexygirl;
  * me : github.com/VolodymyrCj/
  */
 public class Category {
+    public static final int CATEGORY_NONE = 0;
     public static final int CATEGORY_UGIRL = 1;
     public static final int CATEGORY_TGIRL = 2;
 }
