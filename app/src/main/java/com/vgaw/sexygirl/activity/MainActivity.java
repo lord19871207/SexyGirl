@@ -80,9 +80,9 @@ public class MainActivity extends BaseActivity {
                     case R.id.nav_local:
                         changeFragment(localOneFragment, LocalOneFragment.TAG);
                         break;
-                    // 关于
-                    case R.id.nav_about:
-                        Toast.makeText(MainActivity.this, "待开发", Toast.LENGTH_SHORT).show();
+                    // 功能简介
+                    case R.id.nav_intro:
+                        startActivity(new Intent(MainActivity.this, IntroActivity.class));
                         break;
                 }
                 return true;
