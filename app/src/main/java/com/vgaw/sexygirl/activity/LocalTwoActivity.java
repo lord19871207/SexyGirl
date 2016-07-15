@@ -4,6 +4,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.alibaba.fastjson.JSON;
@@ -41,14 +42,14 @@ public class LocalTwoActivity extends BaseActivity {
             }
         });
         lv = (ListView) findViewById(R.id.lv);
+        lv.setOnItemLongClickListener(longClickListener);
         adapter = new EasyAdapter(this, dataList) {
             @Override
             public EasyHolder getHolder(int type) {
                 return new TwoHolder(){
                     @Override
                     public void refreshView(Object item) {
-                        iv_head_item.setImageBitmap(BitmapFactory.decodeFile(FileUtil.getRootDirPath()
-                                + Utils.proListToPath(pathList) + File.separator + String.valueOf(item)));
+                        iv_head_item.setImageBitmap(BitmapFactory.decodeFile(getPicPath(String.valueOf(item))));
                     }
                 };
             }
@@ -58,11 +59,30 @@ public class LocalTwoActivity extends BaseActivity {
         refresh();
     }
 
+    private AdapterView.OnItemLongClickListener longClickListener = new AdapterView.OnItemLongClickListener() {
+        @Override
+        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            if (FileUtil.deleteFile(getPicPath(dataList.get(position)))){
+                Utils.showToast(LocalTwoActivity.this, "删除成功");
+                dataList.remove(position);
+                adapter.notifyDataSetChanged();
+            }else {
+                Utils.showToast(LocalTwoActivity.this, "删除失败");
+            }
+            return true;
+        }
+    };
+
     private void refresh(){
         pathList = JSON.parseArray(getIntent().getStringExtra("path"), String.class);
         String[] picArray = ScanEngine.get(pathList);
         Utils.putStringArrayToList(dataList, picArray);
         adapter.notifyDataSetChanged();
+    }
+
+    private String getPicPath(String picName){
+        return FileUtil.getRootDirPath()
+                + Utils.proListToPath(pathList) + File.separator + picName;
     }
 
 }
