@@ -8,4 +8,6 @@ It's a picture application that all resources comes from http://www.lesmao.com
 2.Download pictures and can view them in app;<br>
 3.Download mode:a mode that meets the need that you want to download pictures but dont want others to say what youre downloading;<br>
 4.No exception:Feedback;
+##Note!
+本软件可能涉及到版权问题，私人使用即可，切不可传播！
 ##Hope you enjoy it!
